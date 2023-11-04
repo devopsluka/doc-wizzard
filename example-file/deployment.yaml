@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Go-app-Go
+  namespace: Go-Applications
+  labels:
+    app: OpenShift
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: Go app Go
+  template:
+    metadata:
+      labels:
+        app: Go app Go
+    spec:
+      containers:
+      - name: GoGoGo
+        image: registry.redhat.com/ubi8/go-toolset:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
